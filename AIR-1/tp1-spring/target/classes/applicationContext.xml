@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Bean Collaborateur -->
+    <bean id="c" class="com.ecoalis.Collaborateur">
+        <property name="nom" value="Dupont"/>
+        <property name="prenom" value="Jean"/>
+    </bean>
+
+    <!-- Bean Periode -->
+    <bean id="p" class="com.ecoalis.Periode">
+        <property name="dateDebut" value="2025-01-01"/>
+        <property name="nbJours" value="10"/>
+    </bean>
+
+    <!-- Bean DemandeConge con inyección por setter -->
+    <bean id="demandeConge" class="com.ecoalis.DemandeConge">
+        <property name="collaborateur" ref="c"/>
+        <property name="periode" ref="p"/>
+    </bean>
+
+    <!-- Bean DemandeCongeSansModificateurs con inyección por constructor -->
+    <bean id="demandeCongeSansMod" class="com.ecoalis.DemandeCongeSansModificateurs">
+        <constructor-arg ref="c"/>
+        <constructor-arg ref="p"/>
+    </bean>
+
+</beans>

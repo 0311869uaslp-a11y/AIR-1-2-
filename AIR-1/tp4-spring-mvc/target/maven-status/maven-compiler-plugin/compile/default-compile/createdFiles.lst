@@ -1,0 +1,11 @@
+com\ecoalis\controller\DetailDdcController.class
+com\ecoalis\service\DemandeCongeServiceMock2.class
+com\ecoalis\controller\HomeController.class
+com\ecoalis\model\Collaborateur.class
+com\ecoalis\model\DemandeConge.class
+com\ecoalis\service\CollaborateurRepository.class
+com\ecoalis\controller\ListerDdcController.class
+com\ecoalis\validator\DemandeCongeValidator.class
+com\ecoalis\model\TypeDdc.class
+com\ecoalis\controller\CreerDdcController.class
+com\ecoalis\service\DemandeCongeServiceMock.class

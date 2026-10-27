@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ACTIVAR ANOTACIONES (incluye @Autowired, @Qualifier) -->
+    <context:annotation-config/>
+
+    <!-- ==================== -->
+    <!-- BEANS CON QUALIFIER -->
+    <!-- ==================== -->
+    
+    <!-- Bean principal con qualifier="principal" -->
+    <bean id="c" class="com.ecoalis.Collaborateur">
+        <qualifier value="principal"/>  <!-- ESTA LÍNEA ES CLAVE -->
+        <property name="nom" value="Dupont"/>
+        <property name="prenom" value="Jean"/>
+    </bean>
+
+    <!-- Segundo bean con qualifier="secundario" -->
+    <bean id="c2" class="com.ecoalis.Collaborateur">
+        <qualifier value="secundario"/>  <!-- ESTA LÍNEA ES CLAVE -->
+        <property name="nom" value="Martin"/>
+        <property name="prenom" value="Marie"/>
+    </bean>
+
+    <!-- Periode (solo uno, sin ambigüedad) -->
+    <bean id="p" class="com.ecoalis.Periode">
+        <property name="dateDebut" value="2025-01-01"/>
+        <property name="nbJours" value="10"/>
+    </bean>
+
+    <!-- ==================== -->
+    <!-- BEANS QUE USAN @QUALIFIER -->
+    <!-- ==================== -->
+    
+    <!-- Bean que usará @Qualifier("principal") -->
+    <bean id="demandePrincipal" class="com.ecoalis.DemandeCongeQualifierPrincipal"/>
+    
+    <!-- Bean que usará @Qualifier("secundario") -->
+    <bean id="demandeSecundario" class="com.ecoalis.DemandeCongeQualifierSecundario"/>
+    
+    <!-- Bean sin @Qualifier (usará @Primary si existe) -->
+    <bean id="demandeSansQualifier" class="com.ecoalis.DemandeCongeSimple"/>
+
+</beans>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- ==================== -->
+    <!-- BEANS BÁSICOS        -->
+    <!-- ==================== -->
+    <bean id="c" class="com.ecoalis.Collaborateur">
+        <property name="nom" value="Dupont"/>
+        <property name="prenom" value="Jean"/>
+    </bean>
+
+    <bean id="p" class="com.ecoalis.Periode">
+        <property name="dateDebut" value="2025-01-01"/>
+        <property name="nbJours" value="10"/>
+    </bean>
+    
+    <!-- IMPORTANTE: COMENTAR c2 TEMPORALMENTE -->
+    <!-- 
+    <bean id="c2" class="com.ecoalis.Collaborateur">
+        <property name="nom" value="Martin"/>
+        <property name="prenom" value="Marie"/>
+    </bean>
+    -->
+
+    <!-- ==================== -->
+    <!-- AUTOWIRING EN XML    -->
+    <!-- ==================== -->
+    
+    <!-- 1. Autowiring byType -->
+    <bean id="demandeConge" class="com.ecoalis.DemandeConge" autowire="byType"/>
+    
+    <!-- 2. Autowiring byName -->
+    <bean id="demandeCongeByName" class="com.ecoalis.DemandeConge" autowire="byName"/>
+    
+    <!-- 3. Autowiring constructor -->
+    <bean id="demandeCongeSansMod" class="com.ecoalis.DemandeCongeSansModificateurs" 
+          autowire="constructor"/>
+
+    <!-- ==================== -->
+    <!-- AUTOWIRING CON ANNOTATIONS -->
+    <!-- ==================== -->
+    
+    <!-- Activar el procesador de anotaciones @Autowired -->
+    <bean class="org.springframework.beans.factory.annotation.AutowiredAnnotationBeanPostProcessor"/>
+    
+    <!-- Bean que usará @Autowired -->
+    <bean id="demandeAnnotation" class="com.ecoalis.DemandeConge"/>
+
+</beans>
